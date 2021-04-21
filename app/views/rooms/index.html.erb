@@ -1,0 +1,36 @@
+<h3>登録済み部屋一覧</h3>
+<table class="table">
+  <thead>
+    <th>
+      ルーム画像
+    </th>
+    <th>
+      ルーム名
+    </th>
+    <th>
+      ルーム紹介
+    </th>
+    <th>
+      料金
+    </th>
+    <th>
+      場所
+    </th>
+    <th>
+      作成日
+    </th>
+  </thead>
+  <tbody>
+    <% @rooms.each do |room| %>
+      <tr>
+        <td class="align-middle"><%= attachment_image_tag room, :image, size:"200x200"%></td>
+        <td class="align-middle"><%= link_to room_path(room), room.title %></td>
+        <td class="align-middle"><%= room.body %></td>
+        <td class="align-middle">料金</td>
+        <td class="align-middle"><%= room.place %></td>
+        <td class="align-middle"><%= room.updated_at.strftime("%Y-%m-%d %H:%M") %></td>
+        <td class="align-middle">キャンセルしますか？</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

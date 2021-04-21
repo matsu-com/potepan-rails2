@@ -1,0 +1,50 @@
+<section>
+  <div class="container">
+    <h3 class="title">
+      部屋編集
+    </h3>
+  </div>
+</section>
+
+<% if @room.errors.any? %>
+  <div class="notification is-danger">
+    <h2><%= pluralize(@room.errors.count, "error") %> prohibited this object from being saved: not successfully</h2>
+    <ul>
+      <% @room.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-6">
+        <%= form_for @room do |f| %>
+          <div class="field">
+            <%= f.label :title, "部屋名", class: "label" %>
+            <%= f.text_field :title, class: "input" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :body, "説明", class: "label" %>
+            <%= f.text_area :body, class: "textarea" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :image, "写真", class: "label" %>
+            <%= f.attachment_field :image, class: "input" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :place, "場所", class: "label" %>
+            <%= f.text_field :place, class: "input" %>
+          </div>
+
+          <%= f.submit "更新", class: "button is-success" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
