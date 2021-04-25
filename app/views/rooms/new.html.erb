@@ -17,7 +17,7 @@
           </div>
 
           <div class="field">
-            <%= f.label :body, "説明", class: "label" %>
+            <%= f.label :body, "部屋の紹介", class: "label" %>
             <%= f.text_area :body, class: "textarea" %>
           </div>
 
@@ -29,6 +29,11 @@
           <div class="field">
             <%= f.label :place, "場所", class: "label" %>
             <%= f.text_field :place, class: "input" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :cost, "料金", class: "label" %>
+            <%= f.number_field :cost, class: "input" %>
           </div>
 
           <%= f.submit "更新", class: "button is-success" %>

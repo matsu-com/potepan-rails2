@@ -24,10 +24,10 @@
     <% @rooms.each do |room| %>
       <tr>
         <td class="align-middle"><%= attachment_image_tag room, :image, size:"200x200"%></td>
-        <td class="align-middle"><%= link_to room_path(room), room.title %></td>
+        <td class="align-middle"><%= link_to "#{room.title}", "/rooms/#{room.id}", method: :get %></td>
         <td class="align-middle"><%= room.body %></td>
-        <td class="align-middle">料金</td>
-        <td class="align-middle"><%= room.place %></td>
+        <td class="align-middle"><%= "#{room.cost}"%></td>
+        <td class="align-middle"><%= "#{room.place}" %></td>
         <td class="align-middle"><%= room.updated_at.strftime("%Y-%m-%d %H:%M") %></td>
         <td class="align-middle">キャンセルしますか？</td>
       </tr>

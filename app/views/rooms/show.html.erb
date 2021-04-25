@@ -28,12 +28,12 @@
                   <th>部屋の詳細</th>
                 </tr>
                 <tr>
-                  <td><%= simple_format @room.body %></td>
+                  <td><%= @room.body %></td>
+                  <td>場所：<%= @room.place %></td>
+                  <td>1泊あたり：<%= @room.cost %>円/人</td>
                 </tr>
               </table>
-              <% if @room.user.id == current_user.id %>
-                <%= link_to "編集", edit_room_path(@room), class: "button is-primary" %>
-              <% end %>
+             
             </div>
           </div>
         </div>
@@ -50,11 +50,9 @@
             </p>
           </div>
           <%= link_to user_path(@room.user), class: "panel-block" do %>
-            <span class="panel-icon">
-              <i class="fas fa-user" aria-hidden="true"></i>
-            </span>
             <%= @room.user.username %> さんのページへ
           <% end %>
+            <%= link_to "この部屋を予約する", room_path(@room), class: "panel-block" %>
         </article>
       </div>
     </div>

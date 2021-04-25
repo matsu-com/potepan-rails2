@@ -31,16 +31,24 @@
           <li class="nav-item">
             <a class="nav-link" href="#">◯キーワード◯</a>
           </li>
-          <li class="nav-item">
-            <%= link_to "部屋一覧", rooms_path, class: "button is-primary" %>
-          </li>
         </ul>
         <span class="navbar-text">
           <% if user_signed_in? %>
           <div class="d-flex flex-row-reverse bd-highlight">
             <div class="p-2 bd-highlight">
-              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "button is-primary" %>
+              <div class="dropdown visible-xs text-right">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <img src="/assets/no-imag.png" alt="" class="avator rounded-circle">
+              </a>
+              <ul class="dropdown-menu dropdown-menu-right">
+                <li><%= link_to "新規部屋登録", new_room_path %></li>
+                <li><%= link_to "部屋一覧", rooms_path %></li>
+                <li><%= link_to "登録済み部屋一覧", room_path(current_user.id) %></li>
+                <li><%= link_to "ユーザー情報", user_path(current_user) %></li>
+                <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+              </ul>
             </div>
+          </div>
           <% else %>
             <div class="p-2 bd-highlight">
               <%= link_to "ログイン", new_user_session_path, class: "button is-primary" %>

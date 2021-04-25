@@ -1,5 +1,3 @@
-<h3>ユーザー詳細</h3>
-
 <section class="section">
   <div class="container">
     <div class="columns is-centered">
@@ -12,30 +10,78 @@
           </div>
           <div class="column is-8">
             <table class="table is-fullwidth">
-              <tr>
-                <td class="is-size-4">
-                  <strong><%= @user.username %></strong>
-                </td>
-                <% if @user.id == current_user.id %>
-                <td class="is-size-4">
-                  <%= @user.email %>
-                </td>
-                <td>
-                    <%= link_to "編集", edit_user_path(@user), class: "button is-primary" %>
-                </td>
-                <% end %>
-              </tr>
+              <thead>
+                <th>
+                  ユーザー名
+                </th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="is-size-4">
+                    <strong><%= @user.username %></strong>
+                  </td>
+                  <% if @user.id == current_user.id %>
+                  <td class="is-size-4">
+                    <%= @user.email %>
+                  </td>
+                  <td>
+                      <%= link_to "編集", edit_user_path(@user), class: "button is-primary" %>
+                  </td>
+                  <% end %>
+                </tr>
+              </tbody>
             </table>
             <table class="table is-fullwidth">
-              <tr>
-                <td>
-                  <%= @user.profile %>
-                </td>
-              </tr>
+              <thead>
+                <th>自己紹介</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <%= @user.profile %>
+                  </td>
+                </tr>
+              </tbody>
             </table>
           </div>
         </div>
       </div>
     </div>
   </div>
+</section>
+<section class="section">
+  <table class="table">
+    <thead>
+      <th>
+        ルーム画像
+      </th>
+      <th>
+        ルーム名
+      </th>
+      <th>
+        ルーム紹介
+      </th>
+      <th>
+        料金
+      </th>
+      <th>
+        場所
+      </th>
+      <th>
+        作成日
+      </th>
+    </thead>
+    <tbody>
+      <% @user.rooms.each do |room| %>
+        <tr>
+          <td class="align-middle"><%= attachment_image_tag room, :image, size:"200x200"%></td>
+            <td class="align-middle"><%= link_to "#{room.title}", "/rooms/#{room.id}", method: :get %></td>
+            <td class="align-middle"><%= room.body %></td>
+            <td class="align-middle">料金</td>
+            <td class="align-middle"><%= "#{room.place}" %></td>
+            <td class="align-middle"><%= room.updated_at.strftime("%Y-%m-%d %H:%M") %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </section>
