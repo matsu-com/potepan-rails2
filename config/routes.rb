@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: "homes#index"
+  root to: "rooms#home"
   resources :users
-  resources :rooms
+  resources :rooms do 
+    get :search, on: :collection
+  end
   resources :reservations
 end

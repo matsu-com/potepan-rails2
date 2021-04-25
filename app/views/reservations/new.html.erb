@@ -24,11 +24,8 @@
             <%= params[:person] %>
           </div>
 
-          <div>
-            <%= f.label :料金, class: "label"  %>
-            <%= f.hidden_field :cost, value: params[:cost].to_i * (params[:end_day].to_date - params[:start_day].to_date).to_i * params[:person].to_i %>
-            <%= params[:cost].to_i * (params[:end_day].to_date - params[:start_day].to_date).to_i * params[:person].to_i %>
-          </div>
+
+          
 
           <%= f.submit :予約する, class: "button is-success" %>
         <% end %>

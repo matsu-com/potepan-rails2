@@ -1,9 +1,19 @@
 class RoomsController < ApplicationController
-  def index
+  def home
     @rooms = Room.all
   end
 
+  def keyword
+    @rooms = Room.keyword_search(params[:search])
+  end
+
+  def index
+    @rooms = Room.all
+    # @rooms = Room.search(params[:search])
+  end
+
   def show
+    @rooms = Room.search(params[:search])
     @room = Room.find(params[:id])
   end
 
@@ -33,6 +43,17 @@ class RoomsController < ApplicationController
     room = Room.find(params[:id])
     room.destroy
     redirect_to rooms_path
+  end
+
+  # def search
+  #   @room = Room.search(params[:search])
+  # end
+  def search
+    if params[:place].present?
+      @rooms = Room.where('name LIKE ?', "%#{params[:place]}%")
+    else
+      @rooms = Room.none
+    end
   end
 
   private
