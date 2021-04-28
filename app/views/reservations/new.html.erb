@@ -8,35 +8,30 @@
         <%= form_with url: "/reservations/#{@room.id}/create" do |f| %>
           <div>
             <%= f.label :チェックイン , class: "label" %>
-            <%= f.date_field :start_day %>
+            <%= f.hidden_field :start_day, value: params[:start_day] %>
             <%= params[:start_day] %>
           </div>
 
           <div>
             <%= f.label :チェックアウト, class: "label" %>
-            <%= f.date_field :end_day %>
+            <%= f.hidden_field :end_day, value: params[:end_day] %>
             <%= params[:end_day] %>
           </div>
 
           <div>
-            <%= f.label :人数, class: "label", min: 0 %>
-            <%= f.number_field :person %>
+            <%= f.label :人数, class: "label" %>
+            <%= f.hidden_field :person, value: params[:person] %>
             <%= params[:person] %>
           </div>
 
           <div>
             <%= f.label :料金, class: "label" %>
+            <%= f.hidden_field :cost, value: params[:cost].to_i * (params[:end_day].to_date - params[:start_day].to_date).to_i * params[:person].to_i %>
+            <%= params[:cost].to_i * (params[:end_day].to_date - params[:start_day].to_date).to_i * params[:person].to_i %>
           </div>
-
-            <%# <%= f.number_field :cost %>
-          </div>
-          
-
           <%= f.submit :予約する, class: "button is-success" %>
         <% end %>
       </div>
     </div>
   </div>
 </section>
-
-<%# <%= :cost.to_i * (:end_day.to_date -:start_day.to_date) * :person.to_i %>

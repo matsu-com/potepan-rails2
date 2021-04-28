@@ -6,12 +6,12 @@ class ReservationsController < ApplicationController
   def new
     # @reservation = Reservation.find(params[:id])
     @room = Room.find(params[:id])
-    @reservations = Reservations.new
+    @reservation = Reservation.new
   end
 
   def create
-    @reservation = Reservation.new(reservation_params)
-    @user = current_user.id
+    @reservations = Reservation.new(reservation_params)
+    @user = current_user
     if @reservations.save
       redirect_to "/users/:id/reserved_room"
     end
@@ -26,6 +26,6 @@ class ReservationsController < ApplicationController
 
   private
   def reservation_params
-    params.require(:reservation).permit(:start_day, :end_day, :person, :cost, :room_id, :user_id)
+    params.permit(:start_day, :end_day, :person, :cost, :room_id, :user_id)
   end
 end
