@@ -1,4 +1,5 @@
 class ReservationsController < ApplicationController
+  before_action :set_item_search_query
   def index
     @reservations = Reservation.all
   end
@@ -12,7 +13,7 @@ class ReservationsController < ApplicationController
   def create
     @reservations = Reservation.new(reservation_params)
     @user = current_user
-    if @reservations.save
+    if @reservations.save(reservation_params)
       redirect_to "/users/:id/reserved_room"
     end
   end

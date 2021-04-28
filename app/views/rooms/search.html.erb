@@ -1,11 +1,8 @@
-<h3>登録済み部屋一覧</h3>
+<h1>検索結果</h1>
 <table class="table">
   <thead>
     <th>
       ルーム画像
-    </th>
-    <th>
-      登録ユーザー名
     </th>
     <th>
       ルーム名
@@ -19,20 +16,15 @@
     <th>
       場所
     </th>
-    <th>
-      作成日
-    </th>
   </thead>
   <tbody>
-    <% @rooms.each do |room| %>
+    <% @results.each do |room| %>
       <tr>
-        <td class="align-middle"><%= attachment_image_tag room, :image, size:"200x200" %></td>
-        <td class="align-middle"><%= "#{room.user.username}" %></td>
+        <td class="align-middle"><%= attachment_image_tag room, :image, size:"200x200"%></td>
         <td class="align-middle"><%= link_to "#{room.title}", "/rooms/#{room.id}", method: :get %></td>
         <td class="align-middle"><%= room.body %></td>
         <td class="align-middle"><%= "¥#{room.cost}円 / 人"%></td>
         <td class="align-middle"><%= "#{room.place}" %></td>
-        <td class="align-middle"><%= room.updated_at.strftime("%Y-%m-%d %H:%M") %></td>
       </tr>
     <% end %>
   </tbody>

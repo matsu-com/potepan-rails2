@@ -25,7 +25,13 @@
       <% end %>
       <div class="collapse navbar-collapse" id="navbarText">
         <div class="navbar-nav mr-auto">
-          <%= render "shared/search" %>
+          <%= search_form_for @q, url: search_rooms_path do |f| %>
+            <%= f.label "エリア" %>
+            <%= f.search_field :place_cont %>
+            <%= f.label :title_or_body_matches, "キーワード" %>
+            <%= f.search_field :title_or_body_or_place_gt %>
+            <%= f.submit '検索', hide_indicator: true %>
+          <% end %>
         </div>
         <span class="navbar-text">
           <% if user_signed_in? %>

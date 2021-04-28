@@ -61,3 +61,5 @@ gem "refile-mini_magick"
 gem "bulma-rails"
 
 gem 'pry-rails'
+
+gem 'ransack'

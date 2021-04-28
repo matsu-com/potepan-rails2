@@ -1,3 +1,5 @@
+<h3>ユーザー詳細</h3>
+
 <section class="section">
   <div class="container">
     <div class="columns is-centered">
@@ -77,9 +79,12 @@
           <td class="align-middle"><%= attachment_image_tag room, :image, size:"200x200"%></td>
             <td class="align-middle"><%= link_to "#{room.title}", "/rooms/#{room.id}", method: :get %></td>
             <td class="align-middle"><%= room.body %></td>
-            <td class="align-middle">料金</td>
+            <td class="align-middle"><%= "#{room.cost}円 / 人"%></td>
             <td class="align-middle"><%= "#{room.place}" %></td>
             <td class="align-middle"><%= room.updated_at.strftime("%Y-%m-%d %H:%M") %></td>
+            <% if @user == current_user %>
+              <td class="align-middle"><%= link_to "編集", edit_room_path(room.id), class: "button is-primary" %></td>
+            <% end %>
         </tr>
       <% end %>
     </tbody>

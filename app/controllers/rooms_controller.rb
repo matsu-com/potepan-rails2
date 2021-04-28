@@ -1,11 +1,14 @@
 class RoomsController < ApplicationController
+  before_action :set_q, only: [:home, :search]
+  before_action :set_item_search_query
+
   def home
     @rooms = Room.all
   end
 
-  def keyword
-    @rooms = Room.keyword_search(params[:search])
-  end
+  # def keyword
+  #   @rooms = Room.keyword_search(params[:search])
+  # end
 
   def index
     @rooms = Room.all
@@ -45,19 +48,27 @@ class RoomsController < ApplicationController
     redirect_to rooms_path
   end
 
+  def search
+    @results = @q.result
+  end
   # def search
   #   @room = Room.search(params[:search])
   # end
-  def search
-    if params[:place].present?
-      @rooms = Room.where('name LIKE ?', "%#{params[:place]}%")
-    else
-      @rooms = Room.none
-    end
-  end
+  # def search
+  #   if params[:place].present?
+  #     @rooms = Room.where('name LIKE ?', "%#{params[:place]}%")
+  #   else
+  #     @rooms = Room.none
+  #   end
+  # end
 
   private
   def room_params
     params.require(:room).permit(:title, :body, :image, :place, :cost)
   end
+
+  def set_q
+    @q = Room.ransack(params[:q])
+  end
+
 end
