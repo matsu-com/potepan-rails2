@@ -1,7 +1,33 @@
+<div class="top">
+  <div class="top-main">
+  <div class="container">
+    <div class=>
+      <div class="column is-5">
+        <div class="card">
+          <div class="card-content">
+            <div class="content">
+              <h3>Potepan Shareで<br>まだ体験したことのない旅をしよう</h3>
+            </div>
+            <div class="search-content">
+              <%= search_form_for @q, url: search_rooms_path do |f| %>
+                <%= f.label "エリア" %><br>
+                <%= f.search_field :place_cont %><br>
+                <%= f.submit '検索', class: "button is-primary" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
 
-
+  </div>
+</div>
 <div class="main">
-  <img src="/assets/旅1.png " alt="メイン画像" class="main-img">
+  <%# <img src="/assets/旅1.png " alt="メイン画像" class="main-img"> %>
+<section class="serach-section">
+</section>
 </div>
 
 <h2 class="side-title">おすすめエリア</h2>
