@@ -2,8 +2,10 @@ class Reservation < ApplicationRecord
   belongs_to :user
   belongs_to :room
 
-  validates :start, presence: true
-  validates :finish, presence: true
-  validates :person, presence: true
-  validates :cost, presence: true
+  with_options presence: true do
+    validates :start_day
+    validates :end_day
+    validates :person
+    validates :cost
+  end
 end

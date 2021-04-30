@@ -29,7 +29,21 @@
             <%= f.hidden_field :cost, value: params[:cost].to_i * (params[:end_day].to_date - params[:start_day].to_date).to_i * params[:person].to_i %>
             <%= params[:cost].to_i * (params[:end_day].to_date - params[:start_day].to_date).to_i * params[:person].to_i %>
           </div>
+
+          <div>
+            <%= f.label :ルームid %>
+            <%= f.hidden_field :room_id, value: params[:room_id] %>
+            <%= params[:room_id] %>
+          </div>
+
+          <div>
+            <%= f.label :ユーザーid %>
+            <%= f.hidden_field :user_id, value: current_user.id %>
+            <%= current_user.id %>
+          </div>
+
           <%= f.submit :予約する, class: "button is-success" %>
+          <%= link_to "戻る", :back %>
         <% end %>
       </div>
     </div>

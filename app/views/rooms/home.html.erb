@@ -8,20 +8,28 @@
 
 <ul class="area-box">
   <li class="area-list">
-    <img src="/assets/img_tokyo.jpg" alt="東京" class="area-img">
-    <div class="area-string">東京</div>
+    <%= link_to "/rooms?search=東京", class: "area-link" do %>
+      <img src="/assets/img_tokyo.jpg" alt="東京" class="area-img">
+      <div class="area-string">東京</div>
+    <% end %>
   </li>
   <li class="area-list">
-    <img src="/assets/img_osaka.jpg" alt="東京" class="area-img">
-    <div class="area-string">大阪</div>
+    <%= link_to "/rooms?search=大阪", class: "area-link" do %>
+      <img src="/assets/img_osaka.jpg" alt="大阪" class="area-img">
+      <div class="area-string">大阪</div>
+    <% end %>
   </li>
   <li class="area-list">
-    <img src="/assets/img_kyoto.jpg" alt="東京" class="area-img">
-    <div class="area-string">京都</div>
+    <%= link_to "/rooms?search=京都", class: "area-link" do %>
+      <img src="/assets/img_kyoto.jpg" alt="京都" class="area-img">
+      <div class="area-string">京都</div>
+    <% end %>
   </li>
   <li class="area-list">
-    <img src="/assets/img_sapporo.jpg" alt="東京" class="area-img">
-    <div class="area-string">札幌</div>
+    <%= link_to "/rooms?search=札幌", class: "area-link" do %>
+      <img src="/assets/img_sapporo.jpg" alt="札幌" class="area-img">
+      <div class="area-string">札幌</div>
+    <% end %>
   </li>
 </ul>
 

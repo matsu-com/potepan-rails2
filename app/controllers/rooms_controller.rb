@@ -6,9 +6,9 @@ class RoomsController < ApplicationController
     @rooms = Room.all
   end
 
-  # def keyword
-  #   @rooms = Room.keyword_search(params[:search])
-  # end
+  def keyword
+    @rooms = Room.keyword_search(params[:search])
+  end
 
   def index
     @rooms = Room.all
@@ -26,9 +26,12 @@ class RoomsController < ApplicationController
 
   def create
     @room = Room.new(room_params)
-    if @room.user_id = current_user.id
-      @room.save
-      redirect_to room_path(@room)
+    @room.user_id = current_user.id
+    if@room.save
+      flash[:notice] = "新規作成しました。"
+      redirect_to rooms_path
+    else
+      render "new"
     end
   end
 
@@ -38,8 +41,11 @@ class RoomsController < ApplicationController
 
   def update
     @room = Room.find(params[:id])
-    @room.update(room_params)
-    redirect_to room_path(@room)
+    if @room.update(room_params)
+      redirect_to room_path(@room)
+    else
+      render "edit"
+    end
   end
 
   def destroy
@@ -51,9 +57,11 @@ class RoomsController < ApplicationController
   def search
     @results = @q.result
   end
+
   # def search
   #   @room = Room.search(params[:search])
   # end
+
   # def search
   #   if params[:place].present?
   #     @rooms = Room.where('name LIKE ?', "%#{params[:place]}%")

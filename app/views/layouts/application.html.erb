@@ -29,7 +29,7 @@
             <%= f.label "エリア" %>
             <%= f.search_field :place_cont %>
             <%= f.label :title_or_body_matches, "キーワード" %>
-            <%= f.search_field :title_or_body_or_place_gt %>
+            <%= f.search_field :title_or_body_or_place_cont %>
             <%= f.submit '検索', hide_indicator: true %>
           <% end %>
         </div>
@@ -45,8 +45,8 @@
               </a>
               <ul class="dropdown-menu dropdown-menu-right">
                 <li><%= link_to "新規部屋登録", new_room_path %></li>
-                <li><%= link_to "部屋一覧", rooms_path %></li>
-                <li><%= link_to "登録済み部屋一覧", room_path(current_user.id) %></li>
+                <li><%= link_to "登録済み部屋一覧", "/users/#{current_user.id}/post_room" %></li>
+                <li><%= link_to "予約済み部屋一覧", "/users/#{current_user.id}/reserved_room" %></li>
                 <li><%= link_to "ユーザー情報", user_path(current_user) %></li>
                 <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
               </ul>

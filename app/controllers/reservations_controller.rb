@@ -12,8 +12,9 @@ class ReservationsController < ApplicationController
 
   def create
     @reservations = Reservation.new(reservation_params)
+    # binding.pry
     @user = current_user
-    if @reservations.save(reservation_params)
+    if @reservations.save
       redirect_to "/users/:id/reserved_room"
     end
   end

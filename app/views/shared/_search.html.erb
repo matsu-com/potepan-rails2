@@ -1,6 +1,6 @@
-<%= form_tag(rooms_path,:method => 'get') do %>
-  <%= text_field_tag :search, "", placeholder: "エリア" %>
+<%= form_tag("/rooms",:method => 'get') do %>
+    <%= text_field_tag :search, '', placeholder: "エリア" %>
 <% end %>
-<%= form_tag(rooms_path,:method => 'get') do %>
-    <%= text_field_tag :search, "", placeholder: "キーワード" %>
+<%= form_tag("/rooms/keyword",:method => 'get') do %>
+    <%= text_field_tag :search, '', placeholder: "キーワード" %>
 <% end %>

@@ -3,19 +3,26 @@ class Room < ApplicationRecord
   has_many :reservations, dependent: :destroy
   attachment :image
 
-  def self.search(search)
-    if search
-      Room.where(['name LIKE ?', "%#{search}%"])
-    else
-      Room.all
-    end
+  with_options presence: true do
+    validates :title
+    validates :body, length:{maximum: 140}
+    validates :cost
+    validates :place
+    validates :image
   end
-end
 
-def self.keyword_search(search)
-  if search
-    Room.where(['name LIKE ?', "%#{search}%"])
-  else
-    Room.all
-  end
+  # def self.search(search)
+  #   if search
+  #     Room.where(['name LIKE ?', "%#{search}%"])
+  #   else
+  #     Room.all
+  #   end
+  # end
+  # def self.keyword_search(search)
+  #   if search
+  #     Room.where(['name LIKE ?', "%#{search}%"])
+  #   else
+  #     Room.all
+  #   end
+  # end
 end

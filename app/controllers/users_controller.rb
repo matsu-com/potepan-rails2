@@ -23,8 +23,13 @@ class UsersController < ApplicationController
     @rooms = Room.find_by(user_id: current_user.id)
   end
 
+  def post_room
+    @user = User.find(params[:id])
+    @rooms = @user.rooms
+  end
+
   private
   def user_params
-    params.require(:user).permit(:username, :email, :profile)
+    params.require(:user).permit(:username, :email, :profile, :image)
   end
 end
