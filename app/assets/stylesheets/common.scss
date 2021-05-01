@@ -1,7 +1,6 @@
 // ヘッダー
 header {
   width: 100%;
-  height: 100px;
  }
 
  .title {
@@ -56,3 +55,8 @@ header {
     font-family: bold;
   }
 
+  .profile-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 12px;
+  }

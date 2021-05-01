@@ -1,6 +1,7 @@
-<%= form_tag("/rooms",:method => 'get') do %>
-    <%= text_field_tag :search, '', placeholder: "エリア" %>
-<% end %>
-<%= form_tag("/rooms/keyword",:method => 'get') do %>
-    <%= text_field_tag :search, '', placeholder: "キーワード" %>
+<%= search_form_for @q, url: search_rooms_path do |f| %>
+    <%= f.label "エリア" %>
+    <%= f.search_field :place_cont %>
+    <%= f.label :title_or_body_matches, "キーワード" %>
+    <%= f.search_field :title_or_body_or_place_cont %>
+    <%= f.submit "検索", hide_indicator: true %>
 <% end %>
