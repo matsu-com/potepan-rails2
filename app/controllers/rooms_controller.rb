@@ -4,14 +4,17 @@ class RoomsController < ApplicationController
 
   def home
     @rooms = Room.all
+
   end
 
-  def keyword
-    @rooms = Room.keyword_search(params[:search])
-  end
+  # def keyword
+  #   @rooms = Room.keyword_search(params[:search])
+  # end
 
   def index
     @rooms = Room.all
+    # @search = Room.search(params[:q])
+    # @rooms = @search.result
     # @rooms = Room.search(params[:search])
   end
 
@@ -55,7 +58,9 @@ class RoomsController < ApplicationController
   end
 
   def search
+    @serarch = Room.ransack(params[:q])
     @results = @q.result
+    # @rooms = @search.result
   end
 
   # def search
@@ -77,6 +82,6 @@ class RoomsController < ApplicationController
 
   def set_q
     @q = Room.ransack(params[:q])
+    # @rooms = @q.results(distinct: true)
   end
-
 end

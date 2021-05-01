@@ -31,32 +31,32 @@
 </div>
 
 <h2 class="side-title">おすすめエリア</h2>
-
+<%= search_form_for @q, url: search_rooms_path do |f| %>
 <ul class="area-box">
   <li class="area-list">
-    <%= link_to "/rooms?search=東京", class: "area-link" do %>
+    <%= link_to search_rooms_path(q: { place_cont: "東京" }) do %>
       <img src="/assets/img_tokyo.jpg" alt="東京" class="area-img">
       <div class="area-string">東京</div>
     <% end %>
   </li>
   <li class="area-list">
-    <%= link_to "/rooms?search=大阪", class: "area-link" do %>
+    <%= link_to search_rooms_path(q: { place_cont: "大阪" }) do %>
       <img src="/assets/img_osaka.jpg" alt="大阪" class="area-img">
       <div class="area-string">大阪</div>
     <% end %>
   </li>
   <li class="area-list">
-    <%= link_to "/rooms?search=京都", class: "area-link" do %>
+    <%= link_to search_rooms_path(q: { place_cont: "京都" }) do %>
       <img src="/assets/img_kyoto.jpg" alt="京都" class="area-img">
       <div class="area-string">京都</div>
     <% end %>
   </li>
   <li class="area-list">
-    <%= link_to "/rooms?search=札幌", class: "area-link" do %>
+    <%= link_to search_rooms_path(q: { place_cont: "札幌" }) do %>
       <img src="/assets/img_sapporo.jpg" alt="札幌" class="area-img">
       <div class="area-string">札幌</div>
     <% end %>
   </li>
 </ul>
-
+<% end %>
 
